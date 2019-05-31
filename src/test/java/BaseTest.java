@@ -9,6 +9,7 @@ public class BaseTest {
 
     @Before
     public void setup() {
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.get("http://onetsp.com");
     }

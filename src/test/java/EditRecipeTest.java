@@ -3,14 +3,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
-
-public class NewRecipeTest extends BaseTest {
+public class EditRecipeTest extends BaseTest {
 
     @Test
     public void test() {
-
         HomePage homePage = PageFactory.initElements(webDriver, HomePage.class);
         homePage.signIn();
 
@@ -22,18 +18,10 @@ public class NewRecipeTest extends BaseTest {
 
         Assert.assertEquals(fullName, "John Doe");
 
-        profilePage.addRecipe();
-
-        NewRecipePage newRecipePage = PageFactory.initElements(webDriver ,NewRecipePage.class);
-        newRecipePage.Newrecipe("Chocolate Cake","Tasty cake");
-
-        profilePage = PageFactory.initElements(webDriver, ProfilePage.class);
-        profilePage.listRecipes();
-
         RecipesPage recipesPage = PageFactory.initElements(webDriver, RecipesPage.class);
-        List<String> recipes = recipesPage.getRecipes();
+        recipesPage.selectRecipe("knafe");
 
-        Assert.assertTrue(recipes.contains("Chocolate Cake"));
-
+        RecipePage recipePage = PageFactory.initElements(webDriver, RecipePage.class);
+        recipePage.editRecipe("hh", "hhh");
     }
 }
